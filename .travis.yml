@@ -15,12 +15,14 @@ env:
     - GOPATH=/opt
     - DEP_BINDIR=/tmp
     - BUILD_DIR=/opt/src/github.com/coreos/go-systemd
+    - GO111MODULE=on
   matrix:
     - DOCKER_BASE=ubuntu:16.04
     - DOCKER_BASE=ubuntu:18.04
     - DOCKER_BASE=debian:stretch
 
 before_install:
+ - export GO111MODULE=on
  - sudo apt-get -qq update
  - sudo apt-get install -y libsystemd-journal-dev libsystemd-daemon-dev
  - docker pull ${DOCKER_BASE}
